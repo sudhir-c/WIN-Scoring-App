@@ -29,4 +29,10 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
+    <fragment
+        android:id="@+id/navigation_generalInformation"
+        android:name="com.example.winscoringdemoapplication.GeneralInfoFragment"
+        android:label="GENERALINFO"
+        tools:layout="@layout/fragment_general_info" />
+
 </navigation>
