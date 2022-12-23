@@ -1,10 +1,12 @@
 package com.example.winscoringdemoapplication.ui.dashboard;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -17,81 +19,38 @@ import com.example.winscoringdemoapplication.databinding.FragmentDashboardBindin
 
 public class DashboardFragment extends Fragment {
 
-    ToggleButton isTeam1Switch;
-    TextView namedisplayplayer1teamA;
-    TextView namedisplayplayer2teamA;
-    TextView namedisplayplayer3teamA;
-    TextView namedisplayplayer1teamB;
-    TextView namedisplayplayer2teamB;
-    TextView namedisplayplayer3teamB;
+    ToggleButton isTeamASwitch;
+    TextView namedisplayplayer1;
+    TextView namedisplayplayer2;
+    TextView namedisplayplayer3;
+    TextView namedisplayplayer4;
+    TextView namedisplayplayer5;
+    TextView scoreDisplay;
+    //TextView namedisplayplayer6;
 
-    Button scoreincreasePlayer1teamA;
-    Button scoreincreasePlayer2teamA;
-    Button scoreincreasePlayer3teamA;
-    Button scoredecreasePlayer1teamA;
-    Button scoredecreasePlayer2teamA;
-    Button scoredecreasePlayer3teamA;
+    Button scoreincreasePlayer1;
+    Button scoreincreasePlayer2;
+    Button scoreincreasePlayer3;
+    Button scoreincreasePlayer4;
+    Button scoreincreasePlayer5;
+    //Button scoreincreasePlayer6;
 
-    Button scoreincreasePlayer1teamB;
-    Button scoreincreasePlayer2teamB;
-    Button scoreincreasePlayer3teamB;
-    Button scoredecreasePlayer1teamB;
-    Button scoredecreasePlayer2teamB;
-    Button scoredecreasePlayer3teamB;
+    Button scoredecreasePlayer1;
+    Button scoredecreasePlayer2;
+    Button scoredecreasePlayer3;
+    Button scoredecreasePlayer4;
+    Button scoredecreasePlayer5;
+    //Button scoredecreasePlayer6;
+
+    Spinner foulSpinner;
+    Button addFoul;
+    Button decreaseFoul;
+
+
+
 
     private FragmentDashboardBinding binding;
 
-    public void setPlayerScoreInputVisibility(boolean isTeam2SwitchChecked) {
-        if (isTeam2SwitchChecked) {
-            namedisplayplayer1teamA.setVisibility(View.VISIBLE);
-            scoreincreasePlayer1teamA.setVisibility(View.VISIBLE);
-            scoredecreasePlayer1teamA.setVisibility(View.VISIBLE);
-
-            namedisplayplayer2teamA.setVisibility(View.VISIBLE);
-            scoreincreasePlayer2teamA.setVisibility(View.VISIBLE);
-            scoredecreasePlayer2teamA.setVisibility(View.VISIBLE);
-
-            namedisplayplayer3teamA.setVisibility(View.VISIBLE);
-            scoreincreasePlayer3teamA.setVisibility(View.VISIBLE);
-            scoredecreasePlayer3teamA.setVisibility(View.VISIBLE);
-
-            namedisplayplayer1teamB.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer1teamB.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer1teamB.setVisibility(View.INVISIBLE);
-
-            namedisplayplayer2teamB.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer2teamB.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer2teamB.setVisibility(View.INVISIBLE);
-
-            namedisplayplayer3teamB.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer3teamB.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer3teamB.setVisibility(View.INVISIBLE);
-        } else {
-            namedisplayplayer1teamA.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer1teamA.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer1teamA.setVisibility(View.INVISIBLE);
-
-            namedisplayplayer2teamA.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer2teamA.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer2teamA.setVisibility(View.INVISIBLE);
-
-            namedisplayplayer3teamA.setVisibility(View.INVISIBLE);
-            scoreincreasePlayer3teamA.setVisibility(View.INVISIBLE);
-            scoredecreasePlayer3teamA.setVisibility(View.INVISIBLE);
-
-            namedisplayplayer1teamB.setVisibility(View.VISIBLE);
-            scoreincreasePlayer1teamB.setVisibility(View.VISIBLE);
-            scoredecreasePlayer1teamB.setVisibility(View.VISIBLE);
-
-            namedisplayplayer2teamB.setVisibility(View.VISIBLE);
-            scoreincreasePlayer2teamB.setVisibility(View.VISIBLE);
-            scoredecreasePlayer2teamB.setVisibility(View.VISIBLE);
-
-            namedisplayplayer3teamB.setVisibility(View.VISIBLE);
-            scoreincreasePlayer3teamB.setVisibility(View.VISIBLE);
-            scoredecreasePlayer3teamB.setVisibility(View.VISIBLE);
-        }
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -101,169 +60,302 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        isTeam1Switch = binding.isTeam1Switch;
-        isTeam1Switch.setChecked(true);
-        isTeam1Switch.setOnClickListener(new View.OnClickListener() {
+        scoreDisplay = binding.scoreDisplay;
+
+        isTeamASwitch = binding.isTeamASwitch;
+        namedisplayplayer1 = binding.namedisplayPlayer1;
+        namedisplayplayer2 = binding.namedisplayPlayer2;
+        namedisplayplayer3 = binding.namedisplayPlayer3;
+        namedisplayplayer4 = binding.namedisplayPlayer4;
+        namedisplayplayer5 = binding.namedisplayPlayer5;
+
+        scoreincreasePlayer1 = binding.scoreincreasePlayer1;
+        scoreincreasePlayer2 = binding.scoreincreasePlayer2;
+        scoreincreasePlayer3 = binding.scoreincreasePlayer3;
+        scoreincreasePlayer4 = binding.scoreincreasePlayer4;
+        scoreincreasePlayer5 = binding.scoreincreasePlayer5;
+        //scoreincreasePlayer6 = binding.scoreincreasePlayer6;
+
+        scoredecreasePlayer1 = binding.scoredecreasePlayer1;
+        scoredecreasePlayer2 = binding.scoredecreasePlayer2;
+        scoredecreasePlayer3 = binding.scoredecreasePlayer3;
+        scoredecreasePlayer4 = binding.scoredecreasePlayer4;
+        scoredecreasePlayer5 = binding.scoredecreasePlayer5;
+        //scoredecreasePlayer6 = binding.scoredecreasePlayer6;
+
+        foulSpinner = binding.foulSpinner;
+        addFoul = binding.addFoul;
+        decreaseFoul = binding.decreaseFoul;
+
+
+        isTeamASwitch.setChecked(true);
+
+        if (isTeamASwitch.isChecked()) {
+            namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
+            namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
+            namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
+            namedisplayplayer4.setText(DataStore.getTeamA()[3] + ": " + DataStore.getPlayer4teamAScore());
+            namedisplayplayer5.setText(DataStore.getTeamA()[4] + ": " + DataStore.getPlayer5teamAScore());
+
+            scoreincreasePlayer1.setTextColor(Color.BLACK);
+            scoreincreasePlayer2.setTextColor(Color.BLACK);
+            scoreincreasePlayer3.setTextColor(Color.BLACK);
+            scoreincreasePlayer4.setTextColor(Color.BLACK);
+            scoreincreasePlayer5.setTextColor(Color.BLACK);
+
+            scoredecreasePlayer1.setTextColor(Color.BLACK);
+            scoredecreasePlayer2.setTextColor(Color.BLACK);
+            scoredecreasePlayer3.setTextColor(Color.BLACK);
+            scoredecreasePlayer4.setTextColor(Color.BLACK);
+            scoredecreasePlayer5.setTextColor(Color.BLACK);
+
+
+        } else {
+            namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
+            namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
+            namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
+            namedisplayplayer4.setText(DataStore.getTeamB()[3] + ": " + DataStore.getPlayer4teamBScore());
+            namedisplayplayer5.setText(DataStore.getTeamB()[4] + ": " + DataStore.getPlayer5teamBScore());
+
+            scoreincreasePlayer1.setTextColor(Color.WHITE);
+            scoreincreasePlayer2.setTextColor(Color.WHITE);
+            scoreincreasePlayer3.setTextColor(Color.WHITE);
+            scoreincreasePlayer4.setTextColor(Color.WHITE);
+            scoreincreasePlayer5.setTextColor(Color.WHITE);
+
+            scoredecreasePlayer1.setTextColor(Color.WHITE);
+            scoredecreasePlayer2.setTextColor(Color.WHITE);
+            scoredecreasePlayer3.setTextColor(Color.WHITE);
+            scoredecreasePlayer4.setTextColor(Color.WHITE);
+            scoredecreasePlayer5.setTextColor(Color.WHITE);
+
+
+        }
+        isTeamASwitch.setChecked(true);
+        isTeamASwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setPlayerScoreInputVisibility(isTeam1Switch.isChecked());
             }
         });
 
-        namedisplayplayer1teamA = binding.namedisplayPlayer1teamA;
-        namedisplayplayer1teamA.setText(String.valueOf(DataStore.getPlayer1teamAScore()));
-
-        scoreincreasePlayer1teamA = binding.scoreincreasePlayer1teamA;
-        scoreincreasePlayer1teamA.setOnClickListener(new View.OnClickListener() {
+        isTeamASwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataStore.setPlayer1teamAScore(DataStore.getPlayer1teamAScore() + 1);
-                namedisplayplayer1teamA.setText(DataStore.getTeamA()[0] + ": " + String.valueOf(DataStore.getPlayer1teamAScore()));
-            }
-        });
-        scoredecreasePlayer1teamA = binding.scoredecreasePlayer1teamA;
-        scoredecreasePlayer1teamA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer1teamAScore(DataStore.getPlayer1teamAScore() - 1);
-                namedisplayplayer1teamA.setText(DataStore.getTeamA()[0] + ": " + String.valueOf(DataStore.getPlayer1teamAScore()));
-            }
-        });
+                if (isTeamASwitch.isChecked()) {
+                    namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
+                    namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
+                    namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
+                    namedisplayplayer4.setText(DataStore.getTeamA()[3] + ": " + DataStore.getPlayer4teamAScore());
+                    namedisplayplayer5.setText(DataStore.getTeamA()[4] + ": " + DataStore.getPlayer5teamAScore());
 
-        namedisplayplayer2teamA = binding.namedisplayPlayer2teamA;
-        namedisplayplayer2teamA.setText(String.valueOf(DataStore.getPlayer2teamAScore()));
+                    scoreincreasePlayer1.setTextColor(Color.BLACK);
+                    scoreincreasePlayer2.setTextColor(Color.BLACK);
+                    scoreincreasePlayer3.setTextColor(Color.BLACK);
+                    scoreincreasePlayer4.setTextColor(Color.BLACK);
+                    scoreincreasePlayer5.setTextColor(Color.BLACK);
 
-        scoreincreasePlayer2teamA = binding.scoreincreasePlayer2teamA;
-        scoreincreasePlayer2teamA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer2teamAScore(DataStore.getPlayer2teamAScore() + 1);
-                namedisplayplayer2teamA.setText(DataStore.getTeamA()[1] + ": " + String.valueOf(DataStore.getPlayer2teamAScore()));
-            }
-        });
-        scoredecreasePlayer2teamA = binding.scoredecreasePlayer2teamA;
-        scoredecreasePlayer2teamA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer2teamAScore(DataStore.getPlayer2teamAScore() - 1);
-                namedisplayplayer2teamA.setText(DataStore.getTeamA()[1] + ": " + String.valueOf(DataStore.getPlayer2teamAScore()));
-            }
-        });
+                    scoredecreasePlayer1.setTextColor(Color.BLACK);
+                    scoredecreasePlayer2.setTextColor(Color.BLACK);
+                    scoredecreasePlayer3.setTextColor(Color.BLACK);
+                    scoredecreasePlayer4.setTextColor(Color.BLACK);
+                    scoredecreasePlayer5.setTextColor(Color.BLACK);
 
 
-        namedisplayplayer3teamA = binding.namedisplayPlayer3teamA;
-        namedisplayplayer3teamA.setText(String.valueOf(DataStore.getPlayer3teamAScore()));
+                } else {
+                    namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
+                    namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
+                    namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
+                    namedisplayplayer4.setText(DataStore.getTeamB()[3] + ": " + DataStore.getPlayer4teamBScore());
+                    namedisplayplayer5.setText(DataStore.getTeamB()[4] + ": " + DataStore.getPlayer5teamBScore());
 
-        scoreincreasePlayer3teamA = binding.scoreincreasePlayer3teamA;
-        scoreincreasePlayer3teamA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer3teamAScore(DataStore.getPlayer3teamAScore() + 1);
-                namedisplayplayer3teamA.setText(DataStore.getTeamA()[2] + ": " + String.valueOf(DataStore.getPlayer3teamAScore()));
-            }
-        });
-        scoredecreasePlayer3teamA = binding.scoredecreasePlayer3teamA;
-        scoredecreasePlayer3teamA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer3teamAScore(DataStore.getPlayer3teamAScore() - 1);
-                namedisplayplayer3teamA.setText(DataStore.getTeamA()[2] + ": " + String.valueOf(DataStore.getPlayer3teamAScore()));
+                    scoreincreasePlayer1.setTextColor(Color.WHITE);
+                    scoreincreasePlayer2.setTextColor(Color.WHITE);
+                    scoreincreasePlayer3.setTextColor(Color.WHITE);
+                    scoreincreasePlayer4.setTextColor(Color.WHITE);
+                    scoreincreasePlayer5.setTextColor(Color.WHITE);
+
+                    scoredecreasePlayer1.setTextColor(Color.WHITE);
+                    scoredecreasePlayer2.setTextColor(Color.WHITE);
+                    scoredecreasePlayer3.setTextColor(Color.WHITE);
+                    scoredecreasePlayer4.setTextColor(Color.WHITE);
+                    scoredecreasePlayer5.setTextColor(Color.WHITE);
+
+
+                }
             }
         });
 
-
-
-
-
-        namedisplayplayer1teamB = binding.namedisplayPlayer1teamB;
-        namedisplayplayer1teamB.setText(String.valueOf(DataStore.getPlayer1teamBScore()));
-
-        scoreincreasePlayer1teamB = binding.scoreincreasePlayer1teamB;
-        scoreincreasePlayer1teamB.setOnClickListener(new View.OnClickListener() {
+        scoreincreasePlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataStore.setPlayer1teamBScore(DataStore.getPlayer1teamBScore() + 1);
-                namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
-            }
-        });
-        scoredecreasePlayer1teamB = binding.scoredecreasePlayer1teamB;
-        scoredecreasePlayer1teamB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer1teamBScore(DataStore.getPlayer1teamBScore() - 1);
-                namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer1teamAScore(DataStore.getPlayer1teamAScore() + 1);
+                    namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
+                    changeScoreDisplay();
+
+                } else {
+                    DataStore.setPlayer1teamBScore(DataStore.getPlayer1teamBScore() + 1);
+                    namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
+                    changeScoreDisplay();
+                }
             }
         });
 
-        namedisplayplayer2teamB = binding.namedisplayPlayer2teamB;
-        namedisplayplayer2teamB.setText(String.valueOf(DataStore.getPlayer2teamBScore()));
-
-        scoreincreasePlayer2teamB = binding.scoreincreasePlayer2teamB;
-        scoreincreasePlayer2teamB.setOnClickListener(new View.OnClickListener() {
+        scoreincreasePlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataStore.setPlayer2teamBScore(DataStore.getPlayer2teamBScore() + 1);
-                namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
-            }
-        });
-        scoredecreasePlayer2teamB = binding.scoredecreasePlayer2teamB;
-        scoredecreasePlayer2teamB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer2teamBScore(DataStore.getPlayer2teamBScore() - 1);
-                namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer2teamAScore(DataStore.getPlayer2teamAScore() + 1);
+                    namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer2teamBScore(DataStore.getPlayer2teamBScore() + 1);
+                    namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
+                    changeScoreDisplay();
+                }
             }
         });
 
-
-        namedisplayplayer3teamB = binding.namedisplayPlayer3teamB;
-        namedisplayplayer3teamB.setText(String.valueOf(DataStore.getPlayer3teamBScore()));
-
-        scoreincreasePlayer3teamB = binding.scoreincreasePlayer3teamB;
-        scoreincreasePlayer3teamB.setOnClickListener(new View.OnClickListener() {
+        scoreincreasePlayer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataStore.setPlayer3teamBScore(DataStore.getPlayer3teamBScore() + 1);
-                namedisplayplayer3teamB.setText(DataStore.getTeamB()[2] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
-            }
-        });
-        scoredecreasePlayer3teamB = binding.scoredecreasePlayer3teamB;
-        scoredecreasePlayer3teamB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataStore.setPlayer3teamBScore(DataStore.getPlayer3teamBScore() - 1);
-                namedisplayplayer3teamB.setText(DataStore.getTeamB()[3] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer3teamAScore(DataStore.getPlayer3teamAScore() + 1);
+                    namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer3teamBScore(DataStore.getPlayer3teamBScore() + 1);
+                    namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
+                    changeScoreDisplay();
+                }
             }
         });
 
+        scoreincreasePlayer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer4teamAScore(DataStore.getPlayer4teamAScore() + 1);
+                    namedisplayplayer4.setText(DataStore.getTeamA()[3] + ": " + DataStore.getPlayer4teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer4teamBScore(DataStore.getPlayer4teamBScore() + 1);
+                    namedisplayplayer4.setText(DataStore.getTeamB()[3] + ": " + DataStore.getPlayer4teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
 
-        setPlayerScoreInputVisibility(isTeam1Switch.isChecked());
+        scoreincreasePlayer5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer5teamAScore(DataStore.getPlayer5teamAScore() + 1);
+                    namedisplayplayer5.setText(DataStore.getTeamA()[4] + ": " + DataStore.getPlayer5teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer5teamBScore(DataStore.getPlayer5teamBScore() + 1);
+                    namedisplayplayer5.setText(DataStore.getTeamB()[4] + ": " + DataStore.getPlayer5teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
 
-//        namedisplayplayer1teamA.setVisibility(View.VISIBLE);
-//        scoreincreasePlayer1teamA.setVisibility(View.VISIBLE);
-//        scoredecreasePlayer1teamA.setVisibility(View.VISIBLE);
-//
-//        namedisplayplayer2teamA.setVisibility(View.VISIBLE);
-//        scoreincreasePlayer2teamA.setVisibility(View.VISIBLE);
-//        scoredecreasePlayer2teamA.setVisibility(View.VISIBLE);
-//
-//        namedisplayplayer3teamA.setVisibility(View.VISIBLE);
-//        scoreincreasePlayer3teamA.setVisibility(View.VISIBLE);
-//        scoredecreasePlayer3teamA.setVisibility(View.VISIBLE);
-//
-//        namedisplayplayer1teamB.setVisibility(View.INVISIBLE);
-//        scoreincreasePlayer1teamB.setVisibility(View.INVISIBLE);
-//        scoredecreasePlayer1teamB.setVisibility(View.INVISIBLE);
-//
-//        namedisplayplayer2teamB.setVisibility(View.INVISIBLE);
-//        scoreincreasePlayer2teamB.setVisibility(View.INVISIBLE);
-//        scoredecreasePlayer2teamB.setVisibility(View.INVISIBLE);
-//
-//        namedisplayplayer3teamB.setVisibility(View.INVISIBLE);
-//        scoreincreasePlayer3teamA.setVisibility(View.INVISIBLE);
-//        scoredecreasePlayer3teamB.setVisibility(View.INVISIBLE);
+        scoredecreasePlayer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer1teamAScore(DataStore.getPlayer1teamAScore() - 1);
+                    namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
+                    changeScoreDisplay();
+
+                } else {
+                    DataStore.setPlayer1teamBScore(DataStore.getPlayer1teamBScore() - 1);
+                    namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
+
+        scoredecreasePlayer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer2teamAScore(DataStore.getPlayer2teamAScore() - 1);
+                    namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer2teamBScore(DataStore.getPlayer2teamBScore() - 1);
+                    namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
+
+        scoredecreasePlayer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer3teamAScore(DataStore.getPlayer3teamAScore() - 1);
+                    namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer3teamBScore(DataStore.getPlayer3teamBScore() - 1);
+                    namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
+
+        scoredecreasePlayer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer4teamAScore(DataStore.getPlayer4teamAScore() - 1);
+                    namedisplayplayer4.setText(DataStore.getTeamA()[3] + ": " + DataStore.getPlayer4teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer4teamBScore(DataStore.getPlayer4teamBScore() - 1);
+                    namedisplayplayer4.setText(DataStore.getTeamB()[3] + ": " + DataStore.getPlayer4teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
+
+        scoredecreasePlayer5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.setPlayer5teamAScore(DataStore.getPlayer5teamAScore() - 1);
+                    namedisplayplayer5.setText(DataStore.getTeamA()[4] + ": " + DataStore.getPlayer5teamAScore());
+                    changeScoreDisplay();
+                } else {
+                    DataStore.setPlayer5teamBScore(DataStore.getPlayer5teamBScore() - 1);
+                    namedisplayplayer5.setText(DataStore.getTeamB()[4] + ": " + DataStore.getPlayer5teamBScore());
+                    changeScoreDisplay();
+                }
+            }
+        });
+
 
         return root;
+    }
+
+    public void changeScoreDisplay() {
+        int teamAScore =
+                DataStore.getPlayer1teamAScore() +
+                        DataStore.getPlayer2teamAScore() +
+                        DataStore.getPlayer3teamAScore() +
+                        DataStore.getPlayer4teamAScore() +
+                        DataStore.getPlayer5teamAScore();
+        int teamBScore =
+                DataStore.getPlayer1teamBScore() +
+                        DataStore.getPlayer2teamBScore() +
+                        DataStore.getPlayer3teamBScore() +
+                        DataStore.getPlayer4teamBScore() +
+                        DataStore.getPlayer5teamBScore();
+
+        scoreDisplay.setText(teamAScore + " - " + teamBScore);
     }
 
 
@@ -271,13 +363,13 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        namedisplayplayer1teamA.setText(DataStore.getTeamA()[0] + ": " + String.valueOf(DataStore.getPlayer1teamAScore()));
-        namedisplayplayer2teamA.setText(DataStore.getTeamA()[1] + ": " + String.valueOf(DataStore.getPlayer2teamAScore()));
-        namedisplayplayer3teamA.setText(DataStore.getTeamA()[2] + ": " + String.valueOf(DataStore.getPlayer3teamAScore()));
-
-        namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
-        namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
-        namedisplayplayer3teamB.setText(DataStore.getTeamB()[2] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
+//        namedisplayplayer1teamA.setText(DataStore.getTeamA()[0] + ": " + String.valueOf(DataStore.getPlayer1teamAScore()));
+//        namedisplayplayer2teamA.setText(DataStore.getTeamA()[1] + ": " + String.valueOf(DataStore.getPlayer2teamAScore()));
+//        namedisplayplayer3teamA.setText(DataStore.getTeamA()[2] + ": " + String.valueOf(DataStore.getPlayer3teamAScore()));
+//
+//        namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
+//        namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
+//        namedisplayplayer3teamB.setText(DataStore.getTeamB()[2] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
 
 
 

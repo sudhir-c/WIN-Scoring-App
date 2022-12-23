@@ -1,11 +1,128 @@
 package com.example.winscoringdemoapplication;
 
+import java.util.List;
+import java.util.Map;
+
 public class DataStore {
-    private static String[] teamA = {};
-    private static String[] teamB = {};
+    private static String[] teamA = {"", "", "", "", "", "",};
+    private static String[] teamB = {"", "", "", "", "", "",};
     private static int player1teamAScore;
     private static int player2teamAScore;
     private static int player3teamAScore;
+    private static int player4teamAScore;
+    private static int player5teamAScore;
+
+    private static int player1teamBScore;
+    private static int player2teamBScore;
+    private static int player3teamBScore;
+
+
+
+    private static int player4teamBScore;
+    private static int player5teamBScore;
+
+    private static int[] dayMonthYear = {00, 00, 0000};
+    private static String scorekeeperName;
+    private static String matchLocation;
+    private static String teamACoach;
+    private static String teamBCoach;
+    private static String teamAName;
+    private static String teamBName;
+
+    private static List<String> teamAFouls;
+    private static List<String> teamBFouls;
+
+
+    public static String getScorekeeperName() {
+        return scorekeeperName;
+    }
+
+    public static void setScorekeeperName(String scorekeeperName) {
+        DataStore.scorekeeperName = scorekeeperName;
+    }
+
+    public static String getMatchLocation() {
+        return matchLocation;
+    }
+
+    public static void setMatchLocation(String matchLocation) {
+        DataStore.matchLocation = matchLocation;
+    }
+
+    public static String getTeamACoach() {
+        return teamACoach;
+    }
+
+    public static void setTeamACoach(String teamACoach) {
+        DataStore.teamACoach = teamACoach;
+    }
+
+    public static String getTeamBCoach() {
+        return teamBCoach;
+    }
+
+    public static void setTeamBCoach(String teamBCoach) {
+        DataStore.teamBCoach = teamBCoach;
+    }
+
+    public static String getTeamAName() {
+        return teamAName;
+    }
+
+    public static void setTeamAName(String teamAName) {
+        DataStore.teamAName = teamAName;
+    }
+
+    public static String getTeamBName() {
+        return teamBName;
+    }
+
+    public static void setTeamBName(String teamBName) {
+        DataStore.teamBName = teamBName;
+    }
+
+    public static int[] getDayMonthYear() {
+        return dayMonthYear;
+    }
+
+    public static void setDayMonthYear(int[] yearMonthDay) {
+        DataStore.dayMonthYear = yearMonthDay;
+    }
+
+
+
+
+    public static int getPlayer4teamAScore() {
+        return player4teamAScore;
+    }
+
+    public static void setPlayer4teamAScore(int player4teamAScore) {
+        DataStore.player4teamAScore = player4teamAScore;
+    }
+
+    public static int getPlayer5teamAScore() {
+        return player5teamAScore;
+    }
+
+    public static void setPlayer5teamAScore(int player5teamAScore) {
+        DataStore.player5teamAScore = player5teamAScore;
+    }
+
+    public static int getPlayer4teamBScore() {
+        return player4teamBScore;
+    }
+
+    public static void setPlayer4teamBScore(int player4teamBScore) {
+        DataStore.player4teamBScore = player4teamBScore;
+    }
+
+    public static int getPlayer5teamBScore() {
+        return player5teamBScore;
+    }
+
+    public static void setPlayer5teamBScore(int player5teamBScore) {
+        DataStore.player5teamBScore = player5teamBScore;
+    }
 
     public static int getPlayer1teamBScore() {
         return player1teamBScore;
@@ -31,9 +148,6 @@ public class DataStore {
         DataStore.player3teamBScore = player3teamBScore;
     }
 
-    private static int player1teamBScore;
-    private static int player2teamBScore;
-    private static int player3teamBScore;
 
 
 

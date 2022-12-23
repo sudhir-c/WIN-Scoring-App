@@ -1,52 +1,111 @@
 package com.example.winscoringdemoapplication;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.WindowManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.winscoringdemoapplication.databinding.FragmentGeneralInfoBinding;
-import com.example.winscoringdemoapplication.databinding.FragmentQrcodeBinding;
-import com.example.winscoringdemoapplication.ui.home.HomeViewModel;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GeneralInfoFragment extends Fragment {
     public FragmentGeneralInfoBinding binding;
+    public EditText scorekeeperName;
+    public EditText matchLocation;
+    public EditText teamATeamName;
+    public EditText teamACoachName;
+    public EditText teamBTeamName;
+    public EditText teamBCoachName;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGeneralInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        scorekeeperName = binding.scorekeeperNameEntry;
+        matchLocation = binding.matchLocation;
+        teamATeamName = binding.teamATeamName;
+        teamACoachName = binding.teamACoachName;
+        teamBTeamName = binding.teamBTeamName;
+        teamBCoachName = binding.teamBCoachName;
+
+        binding.matchDate.setHint("Enter Date");
+        binding.matchDate.setText("");
         binding.rosterAButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                showDialogA();
             }
         });
 
+        binding.rosterBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogB();
+            }
+        });
+
+        binding.scorekeeperNameEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setScorekeeperName(binding.scorekeeperNameEntry.getText().toString());
+            }
+        });
+
+        binding.matchLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setMatchLocation(binding.matchLocation.getText().toString());
+            }
+        });
+        binding.teamACoachName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setTeamACoach(binding.teamACoachName.getText().toString());
+            }
+        });
+        binding.teamATeamName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setTeamAName(binding.teamATeamName.getText().toString());
+            }
+        });
+        binding.teamBCoachName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setTeamBCoach(binding.teamBCoachName.getText().toString());
+            }
+        });
+        binding.teamBTeamName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataStore.setTeamBName(binding.teamBTeamName.getText().toString());
+            }
+        });
+
+        binding.matchDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(v);
+                binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
+            }
+        });
+        //binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
+
         return root;
     }
-
+//    public static void setDate(String y ) {
+//        date = y;
+//    }
 
     @Override
     public void onDestroyView() {
@@ -54,7 +113,33 @@ public class GeneralInfoFragment extends Fragment {
         binding = null;
     }
 
-    void showDialog() {
+    @Override
+    public void onPause() {
+        DataStore.setScorekeeperName(scorekeeperName.getText().toString());
+        //DataStore.setDayMonthYear()
+        DataStore.setMatchLocation(matchLocation.getText().toString());
+        DataStore.setTeamACoach(teamACoachName.getText().toString());
+        DataStore.setTeamAName(teamATeamName.getText().toString());
+        DataStore.setTeamBCoach(teamBCoachName.getText().toString());
+        DataStore.setTeamBName(teamBTeamName.getText().toString());
+
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        binding.scorekeeperNameEntry.setText(DataStore.getScorekeeperName());
+        binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
+        binding.matchLocation.setText(DataStore.getMatchLocation());
+        binding.teamACoachName.setText(DataStore.getTeamACoach());
+        binding.teamATeamName.setText(DataStore.getTeamAName());
+        binding.teamBCoachName.setText(DataStore.getTeamBCoach());
+        binding.teamBTeamName.setText(DataStore.getTeamBName());
+
+        super.onResume();
+        binding = null;
+    }
+    void showDialogA() {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
@@ -67,6 +152,45 @@ public class GeneralInfoFragment extends Fragment {
 
         // Create and show the dialog.
         DialogFragment newFragment = RosterADialogFragment.newInstance();
+
         newFragment.show(ft, "rostera");
     }
+
+    void showDialogB() {
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("rosterb");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        DialogFragment newFragment = RosterBDialogFragment.newInstance();
+//        int width = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
+//        int height = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
+//        newFragment.getDialog().getWindow().setLayout(width, height);
+        newFragment.show(ft, "rosterb");
+//        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//        //layoutParams.copyFrom(newFragment.getDialog().getWindow().getAttributes());
+//
+//        // setting width to 90% of display
+//        layoutParams.width = (int) (displayMetrics.widthPixels * 0.9f);
+//
+//        // setting height to 90% of display
+//        layoutParams.height = (int) (displayMetrics.heightPixels * 0.9f);
+//        newFragment.getDialog().getWindow().setAttributes(layoutParams);
+////        newFragment.setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+    }
+
+
 }
