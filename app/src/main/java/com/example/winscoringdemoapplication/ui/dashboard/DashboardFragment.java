@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.winscoringdemoapplication.DataStore;
+import com.example.winscoringdemoapplication.R;
 import com.example.winscoringdemoapplication.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
@@ -45,8 +47,7 @@ public class DashboardFragment extends Fragment {
     Spinner foulSpinner;
     Button addFoul;
     Button decreaseFoul;
-
-
+    TextView foulCount;
 
 
     private FragmentDashboardBinding binding;
@@ -86,9 +87,13 @@ public class DashboardFragment extends Fragment {
         foulSpinner = binding.foulSpinner;
         addFoul = binding.addFoul;
         decreaseFoul = binding.decreaseFoul;
+        foulCount = binding.foulCount;
 
 
         isTeamASwitch.setChecked(true);
+
+        final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
+
 
         if (isTeamASwitch.isChecked()) {
             namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
@@ -108,6 +113,18 @@ public class DashboardFragment extends Fragment {
             scoredecreasePlayer3.setTextColor(Color.BLACK);
             scoredecreasePlayer4.setTextColor(Color.BLACK);
             scoredecreasePlayer5.setTextColor(Color.BLACK);
+
+            addFoul.setTextColor(Color.BLACK);
+            decreaseFoul.setTextColor(Color.BLACK);
+
+            foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamA());
+
+            try {
+                foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
+            } catch (NullPointerException e) {
+                foulCount.setText("Fouls: 0");
+            }
+
 
 
         } else {
@@ -129,14 +146,21 @@ public class DashboardFragment extends Fragment {
             scoredecreasePlayer4.setTextColor(Color.WHITE);
             scoredecreasePlayer5.setTextColor(Color.WHITE);
 
+            addFoul.setTextColor(Color.WHITE);
+            decreaseFoul.setTextColor(Color.WHITE);
+
+            foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamB());
+
+            try {
+                foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
+            } catch (NullPointerException e) {
+                foulCount.setText("Fouls: 0");
+            }
+
 
         }
-        isTeamASwitch.setChecked(true);
-        isTeamASwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+
+        foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
 
         isTeamASwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +184,17 @@ public class DashboardFragment extends Fragment {
                     scoredecreasePlayer4.setTextColor(Color.BLACK);
                     scoredecreasePlayer5.setTextColor(Color.BLACK);
 
+                    addFoul.setTextColor(Color.BLACK);
+                    decreaseFoul.setTextColor(Color.BLACK);
+
+                    foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamA());
+                    foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
+
+                    try {
+                        foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
+                    } catch (NullPointerException e) {
+                        foulCount.setText("Fouls: 0");
+                    }
 
                 } else {
                     namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
@@ -179,6 +214,18 @@ public class DashboardFragment extends Fragment {
                     scoredecreasePlayer3.setTextColor(Color.WHITE);
                     scoredecreasePlayer4.setTextColor(Color.WHITE);
                     scoredecreasePlayer5.setTextColor(Color.WHITE);
+
+                    addFoul.setTextColor(Color.WHITE);
+                    decreaseFoul.setTextColor(Color.WHITE);
+
+                    foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamB());
+                    foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
+
+                    try {
+                        foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
+                    } catch (NullPointerException e) {
+                        foulCount.setText("Fouls: 0");
+                    }
 
 
                 }
@@ -336,6 +383,18 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
+        addFoul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.getTeamAFouls().add(foulSpinner.getSelectedItem().toString());
+                    foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
+                } else {
+                    DataStore.getTeamBFouls().add(foulSpinner.getSelectedItem().toString());
+                    foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
+                }
+            }
+        });
 
 
         return root;
@@ -359,7 +418,6 @@ public class DashboardFragment extends Fragment {
     }
 
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -370,7 +428,6 @@ public class DashboardFragment extends Fragment {
 //        namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
 //        namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
 //        namedisplayplayer3teamB.setText(DataStore.getTeamB()[2] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
-
 
 
     }

@@ -1,5 +1,6 @@
 package com.example.winscoringdemoapplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +30,26 @@ public class DataStore {
     private static String teamAName;
     private static String teamBName;
 
-    private static List<String> teamAFouls;
-    private static List<String> teamBFouls;
+    private static List teamAFouls = new ArrayList();
+    private static List teamBFouls = new ArrayList();
+
+    public static List<String> getTeamAFouls() {
+        return teamAFouls;
+    }
+
+    public static void setTeamAFouls(List<String> teamAFouls) {
+        DataStore.teamAFouls = teamAFouls;
+    }
+
+    public static List<String> getTeamBFouls() {
+        return teamBFouls;
+    }
+
+    public static void setTeamBFouls(List<String> teamBFouls) {
+        DataStore.teamBFouls = teamBFouls;
+    }
+
+
 
 
     public static String getScorekeeperName() {
