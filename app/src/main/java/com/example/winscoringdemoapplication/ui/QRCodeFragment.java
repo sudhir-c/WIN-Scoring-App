@@ -1,4 +1,4 @@
-package com.example.winscoringdemoapplication.ui.home;
+package com.example.winscoringdemoapplication.ui;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -35,14 +35,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HomeFragment extends Fragment {
+public class QRCodeFragment extends Fragment {
 
     private FragmentQrcodeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
 
         binding = FragmentQrcodeBinding.inflate(inflater, container, false);

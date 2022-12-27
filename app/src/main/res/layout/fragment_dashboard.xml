@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.DashboardFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,14 +39,22 @@
 
                 </LinearLayout>
 
-                <ToggleButton
-                    android:id="@+id/is_team_A_switch"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Team B"
-                    android:textOn="Team A" />
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ToggleButton
+                        android:id="@+id/is_team_A_switch"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="ToggleButton"
+                        android:textOff="Team B"
+                        android:textOn="Team A" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

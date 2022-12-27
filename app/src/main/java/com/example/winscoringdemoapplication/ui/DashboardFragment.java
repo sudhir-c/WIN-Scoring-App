@@ -1,4 +1,4 @@
-package com.example.winscoringdemoapplication.ui.dashboard;
+package com.example.winscoringdemoapplication.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -55,8 +55,6 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -91,11 +89,13 @@ public class DashboardFragment extends Fragment {
 
 
         isTeamASwitch.setChecked(true);
+        isTeamASwitch.setBackgroundColor(Color.rgb(252, 108, 66));
 
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
 
 
         if (isTeamASwitch.isChecked()) {
+            isTeamASwitch.setTextColor(Color.BLACK);
             namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
             namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
             namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
@@ -128,6 +128,7 @@ public class DashboardFragment extends Fragment {
 
 
         } else {
+            isTeamASwitch.setTextColor(Color.WHITE);
             namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
             namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
             namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
@@ -166,6 +167,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isTeamASwitch.isChecked()) {
+                    isTeamASwitch.setTextColor(Color.BLACK);
                     namedisplayplayer1.setText(DataStore.getTeamA()[0] + ": " + DataStore.getPlayer1teamAScore());
                     namedisplayplayer2.setText(DataStore.getTeamA()[1] + ": " + DataStore.getPlayer2teamAScore());
                     namedisplayplayer3.setText(DataStore.getTeamA()[2] + ": " + DataStore.getPlayer3teamAScore());
@@ -197,6 +199,7 @@ public class DashboardFragment extends Fragment {
                     }
 
                 } else {
+                    isTeamASwitch.setTextColor(Color.WHITE);
                     namedisplayplayer1.setText(DataStore.getTeamB()[0] + ": " + DataStore.getPlayer1teamBScore());
                     namedisplayplayer2.setText(DataStore.getTeamB()[1] + ": " + DataStore.getPlayer2teamBScore());
                     namedisplayplayer3.setText(DataStore.getTeamB()[2] + ": " + DataStore.getPlayer3teamBScore());
