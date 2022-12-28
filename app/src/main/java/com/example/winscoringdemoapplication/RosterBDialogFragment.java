@@ -17,7 +17,6 @@ public class RosterBDialogFragment extends DialogFragment {
     EditText playerName3teamB;
     EditText playerName4teamB;
     EditText playerName5teamB;
-    EditText playerName6teamB;
 
     public @NonNull DialogfragmentRosterBBinding binding;
 
@@ -37,19 +36,14 @@ public class RosterBDialogFragment extends DialogFragment {
         playerName3teamB = binding.playerName3teamB;
         playerName4teamB = binding.playerName4teamB;
         playerName5teamB = binding.playerName5teamB;
-        playerName6teamB = binding.playerName6teamB;
 
         playerName1teamB.setText(DataStore.getTeamB()[0]);
         playerName2teamB.setText(DataStore.getTeamB()[1]);
         playerName3teamB.setText(DataStore.getTeamB()[2]);
         playerName4teamB.setText(DataStore.getTeamB()[3]);
         playerName5teamB.setText(DataStore.getTeamB()[4]);
-        playerName6teamB.setText(DataStore.getTeamB()[5]);
 
         setStyle(STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
-//        int width = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
-//        int height = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
-//        getDialog().getWindow().setLayout(width, height);
 
         return root;
     }
@@ -61,7 +55,6 @@ public class RosterBDialogFragment extends DialogFragment {
                 playerName3teamB.getText().toString(),
                 playerName4teamB.getText().toString(),
                 playerName5teamB.getText().toString(),
-                playerName6teamB.getText().toString(),
         };
         DataStore.setTeamB(teamB);
         super.onPause();
@@ -76,7 +69,6 @@ public class RosterBDialogFragment extends DialogFragment {
                 playerName3teamB.getText().toString(),
                 playerName4teamB.getText().toString(),
                 playerName5teamB.getText().toString(),
-                playerName6teamB.getText().toString(),
         };
         DataStore.setTeamB(teamB);
         super.onDestroyView();
