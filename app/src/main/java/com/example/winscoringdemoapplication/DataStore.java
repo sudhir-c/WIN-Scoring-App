@@ -1,6 +1,10 @@
 package com.example.winscoringdemoapplication;
 
+import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +20,6 @@ public class DataStore {
     private static int player1teamBScore;
     private static int player2teamBScore;
     private static int player3teamBScore;
-
-
-
     private static int player4teamBScore;
     private static int player5teamBScore;
 
@@ -30,25 +31,16 @@ public class DataStore {
     private static String teamAName;
     private static String teamBName;
 
-    private static List teamAFouls = new ArrayList();
-    private static List teamBFouls = new ArrayList();
+    private static ArrayList<Integer> teamAFouls = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
+    private static ArrayList<Integer> teamBFouls = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
 
-    public static List<String> getTeamAFouls() {
+    public static ArrayList<Integer> getTeamAFouls() {
         return teamAFouls;
     }
 
-    public static void setTeamAFouls(List<String> teamAFouls) {
-        DataStore.teamAFouls = teamAFouls;
-    }
-
-    public static List<String> getTeamBFouls() {
+    public static ArrayList<Integer> getTeamBFouls() {
         return teamBFouls;
     }
-
-    public static void setTeamBFouls(List<String> teamBFouls) {
-        DataStore.teamBFouls = teamBFouls;
-    }
-
 
 
 

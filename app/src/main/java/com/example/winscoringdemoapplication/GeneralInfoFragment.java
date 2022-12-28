@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -19,93 +20,96 @@ import com.example.winscoringdemoapplication.databinding.FragmentGeneralInfoBind
 
 public class GeneralInfoFragment extends Fragment {
     public FragmentGeneralInfoBinding binding;
-    public EditText scorekeeperName;
+    public EditText scorekeeperNameEntry;
     public EditText matchLocation;
     public EditText teamATeamName;
     public EditText teamACoachName;
     public EditText teamBTeamName;
     public EditText teamBCoachName;
+    public EditText matchDate;
+    public Button rosterAButton;
+    public Button rosterBButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGeneralInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        scorekeeperName = binding.scorekeeperNameEntry;
+        scorekeeperNameEntry = binding.scorekeeperNameEntry;
         matchLocation = binding.matchLocation;
         teamATeamName = binding.teamATeamName;
         teamACoachName = binding.teamACoachName;
         teamBTeamName = binding.teamBTeamName;
         teamBCoachName = binding.teamBCoachName;
+        matchDate = binding.matchDate;
+        rosterAButton = binding.rosterAButton;
+        rosterBButton = binding.rosterBButton;
 
-        binding.matchDate.setHint("Enter Date");
-        binding.matchDate.setText("");
-        binding.rosterAButton.setOnClickListener(new View.OnClickListener() {
+
+        matchDate.setHint("Enter Date");
+        matchDate.setText("");
+        rosterAButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogA();
             }
         });
 
-        binding.rosterBButton.setOnClickListener(new View.OnClickListener() {
+        rosterBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogB();
             }
         });
 
-        binding.scorekeeperNameEntry.setOnClickListener(new View.OnClickListener() {
+        scorekeeperNameEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setScorekeeperName(binding.scorekeeperNameEntry.getText().toString());
             }
         });
 
-        binding.matchLocation.setOnClickListener(new View.OnClickListener() {
+        matchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setMatchLocation(binding.matchLocation.getText().toString());
             }
         });
-        binding.teamACoachName.setOnClickListener(new View.OnClickListener() {
+        teamACoachName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setTeamACoach(binding.teamACoachName.getText().toString());
             }
         });
-        binding.teamATeamName.setOnClickListener(new View.OnClickListener() {
+       teamATeamName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setTeamAName(binding.teamATeamName.getText().toString());
             }
         });
-        binding.teamBCoachName.setOnClickListener(new View.OnClickListener() {
+        teamBCoachName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setTeamBCoach(binding.teamBCoachName.getText().toString());
             }
         });
-        binding.teamBTeamName.setOnClickListener(new View.OnClickListener() {
+        teamBTeamName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DataStore.setTeamBName(binding.teamBTeamName.getText().toString());
             }
         });
 
-        binding.matchDate.setOnClickListener(new View.OnClickListener() {
+        matchDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog(v);
-                binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
+                matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/" + DataStore.getDayMonthYear()[2]);
             }
         });
-        //binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
 
         return root;
     }
-//    public static void setDate(String y ) {
-//        date = y;
-//    }
 
     @Override
     public void onDestroyView() {
@@ -115,7 +119,7 @@ public class GeneralInfoFragment extends Fragment {
 
     @Override
     public void onPause() {
-        DataStore.setScorekeeperName(scorekeeperName.getText().toString());
+        DataStore.setScorekeeperName(scorekeeperNameEntry.getText().toString());
         //DataStore.setDayMonthYear()
         DataStore.setMatchLocation(matchLocation.getText().toString());
         DataStore.setTeamACoach(teamACoachName.getText().toString());
@@ -129,7 +133,7 @@ public class GeneralInfoFragment extends Fragment {
     @Override
     public void onResume() {
         binding.scorekeeperNameEntry.setText(DataStore.getScorekeeperName());
-        binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/"  + DataStore.getDayMonthYear()[2]);
+        binding.matchDate.setText(DataStore.getDayMonthYear()[0] + "/" + DataStore.getDayMonthYear()[1] + "/" + DataStore.getDayMonthYear()[2]);
         binding.matchLocation.setText(DataStore.getMatchLocation());
         binding.teamACoachName.setText(DataStore.getTeamACoach());
         binding.teamATeamName.setText(DataStore.getTeamAName());
@@ -139,6 +143,7 @@ public class GeneralInfoFragment extends Fragment {
         super.onResume();
         binding = null;
     }
+
     void showDialogA() {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing

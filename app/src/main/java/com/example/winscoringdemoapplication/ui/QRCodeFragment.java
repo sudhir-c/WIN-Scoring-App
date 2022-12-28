@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,66 +54,60 @@ public class QRCodeFragment extends Fragment {
         genQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayQRCode();
+                try {
+                    displayQRCode();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
 
-//        Button re = binding.pressHere;
-//        re.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String[] teamA = DataStore.getTeamA();
-//                if (teamA != null) {
-//                    for (int i = 0; i < teamA.length; i++) {
-//                        System.out.println(teamA[i]);
-//                    }
-//                }
-//            }
-//        });
-//
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 
-    public void displayQRCode() {
+    public void displayQRCode() throws JSONException {
+        int teamATotalScore;
+        int teamBTotalScore;
+        ArrayList<Integer> teamAScores = new ArrayList<>();
+        teamAScores.add(0, DataStore.getPlayer1teamAScore());
+        teamAScores.add(1, DataStore.getPlayer2teamAScore());
+        teamAScores.add(2, DataStore.getPlayer3teamAScore());
+        teamAScores.add(3, DataStore.getPlayer4teamAScore());
+        teamAScores.add(4, DataStore.getPlayer5teamAScore());
+        teamATotalScore = teamAScores.stream().mapToInt(score -> score).sum();
+        ArrayList<Integer> teamBScores = new ArrayList<>();
+        teamBScores.add(0, DataStore.getPlayer1teamBScore());
+        teamBScores.add(1, DataStore.getPlayer2teamBScore());
+        teamBScores.add(2, DataStore.getPlayer3teamBScore());
+        teamBScores.add(3, DataStore.getPlayer4teamBScore());
+        teamBScores.add(4, DataStore.getPlayer5teamBScore());
+        teamBTotalScore = teamBScores.stream().mapToInt(score -> score).sum();
 
-        String teamAScores = "TEAM_A:{{"+ DataStore.getTeamA()[0] + ":" + String.valueOf(DataStore.getPlayer1teamAScore()) + "}," + "{"+ DataStore.getTeamA()[1] + ":" + String.valueOf(DataStore.getPlayer2teamAScore()) + "}," + "{"+ DataStore.getTeamA()[2] + ":" + String.valueOf(DataStore.getPlayer3teamAScore()) + "}";
-        String teamBScores = "TEAM_B:{{"+ DataStore.getTeamB()[0] + ":" + String.valueOf(DataStore.getPlayer1teamBScore()) + "}," + "{"+ DataStore.getTeamB()[1] + ":" + String.valueOf(DataStore.getPlayer2teamBScore()) + "}," + "{"+ DataStore.getTeamB()[2] + ":" + String.valueOf(DataStore.getPlayer3teamBScore()) + "}";
-//                {
-//                        DataStore.getTeamA()[0], String.valueOf(DataStore.getPlayer1teamAScore())
-//                },
-//                {
-//                        DataStore.getTeamA()[1], String.valueOf(DataStore.getPlayer2teamAScore())
-//                },
-//                {
-//                        DataStore.getTeamA()[2], String.valueOf(DataStore.getPlayer3teamAScore())
-//                },
-//
-//        }";
-
-
-//        String[][] teamBScores = {
-//                {
-//                        DataStore.getTeamB()[0], String.valueOf(DataStore.getPlayer1teamBScore()),
-//                },
-//                {
-//                        DataStore.getTeamB()[1], String.valueOf(DataStore.getPlayer2teamBScore())
-//                },
-//                {
-//                        DataStore.getTeamB()[2], String.valueOf(DataStore.getPlayer3teamBScore())
-//                },
-//
-//        };
-
+        JSONObject matchJSON = new JSONObject();
+        matchJSON.put("Scorekeeper", DataStore.getScorekeeperName());
+        matchJSON.put("Date", DataStore.getDayMonthYear()[0] + "-" + DataStore.getDayMonthYear()[1] + "-" + DataStore.getDayMonthYear()[2]);
+        matchJSON.put("Match Location", DataStore.getMatchLocation());
+        matchJSON.put("Team A Name", DataStore.getTeamAName());
+        matchJSON.put("Team A Coach", DataStore.getTeamACoach());
+        matchJSON.put("Team A Roster", Arrays.toString(DataStore.getTeamA()));
+        matchJSON.put("Team A Total Score", teamATotalScore);
+        matchJSON.put("Team A Scores", teamAScores);
+        matchJSON.put("Team A Fouls", DataStore.getTeamAFouls());
+        matchJSON.put("Team B Name", DataStore.getTeamBName());
+        matchJSON.put("Team B Coach", DataStore.getTeamBCoach());
+        matchJSON.put("Team B Roster", Arrays.toString(DataStore.getTeamB()));
+        matchJSON.put("Team B Total Score", teamBTotalScore);
+        matchJSON.put("Team B Scores", teamBScores);
+        matchJSON.put("Team B Fouls", DataStore.getTeamBFouls());
 
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
         hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         try {
             //generate QR code
-            Bitmap QRCode = generateQRcode(teamAScores + "   " + teamBScores, charset, hashMap, 1800, 1800);
+            Bitmap QRCode = generateQRcode(matchJSON.toString(), charset, hashMap, 1800, 1800);
             //Set image to display QR code and make it visible
             ImageView qrCodeHolder = binding.qrCodeHolder;
             //ImageView qrCodeDisplayLarge = requireView().findViewById(R.id.matchQRCodeHolderLarge);

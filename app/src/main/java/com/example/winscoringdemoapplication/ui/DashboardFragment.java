@@ -19,6 +19,8 @@ import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.R;
 import com.example.winscoringdemoapplication.databinding.FragmentDashboardBinding;
 
+import java.util.Arrays;
+
 public class DashboardFragment extends Fragment {
 
     ToggleButton isTeamASwitch;
@@ -118,13 +120,7 @@ public class DashboardFragment extends Fragment {
             decreaseFoul.setTextColor(Color.BLACK);
 
             foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamA());
-
-            try {
-                foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
-            } catch (NullPointerException e) {
-                foulCount.setText("Fouls: 0");
-            }
-
+            foulCount.setText("Fouls: 0");
 
 
         } else {
@@ -151,14 +147,7 @@ public class DashboardFragment extends Fragment {
             decreaseFoul.setTextColor(Color.WHITE);
 
             foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamB());
-
-            try {
-                foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
-            } catch (NullPointerException e) {
-                foulCount.setText("Fouls: 0");
-            }
-
-
+            foulCount.setText("Fouls: 0");
         }
 
         foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
@@ -191,12 +180,8 @@ public class DashboardFragment extends Fragment {
 
                     foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamA());
                     foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
+                    foulCount.setText("Fouls: " + DataStore.getTeamAFouls().stream().mapToInt(score -> score).sum());
 
-                    try {
-                        foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
-                    } catch (NullPointerException e) {
-                        foulCount.setText("Fouls: 0");
-                    }
 
                 } else {
                     isTeamASwitch.setTextColor(Color.WHITE);
@@ -224,11 +209,7 @@ public class DashboardFragment extends Fragment {
                     foulSpinnerArrayAdapter[0] = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, DataStore.getTeamB());
                     foulSpinner.setAdapter(foulSpinnerArrayAdapter[0]);
 
-                    try {
-                        foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
-                    } catch (NullPointerException e) {
-                        foulCount.setText("Fouls: 0");
-                    }
+                    foulCount.setText("Fouls: " + DataStore.getTeamBFouls().stream().mapToInt(score -> score).sum());
 
 
                 }
@@ -389,12 +370,30 @@ public class DashboardFragment extends Fragment {
         addFoul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int scoreTotal = 0;
                 if (isTeamASwitch.isChecked()) {
-                    DataStore.getTeamAFouls().add(foulSpinner.getSelectedItem().toString());
-                    foulCount.setText("Fouls: " + DataStore.getTeamAFouls().size());
+                    DataStore.getTeamAFouls().set(foulSpinner.getSelectedItemPosition(), DataStore.getTeamAFouls().get(foulSpinner.getSelectedItemPosition()) + 1);
+                    scoreTotal = DataStore.getTeamAFouls().stream().mapToInt(score -> score).sum();
+                    foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
                 } else {
-                    DataStore.getTeamBFouls().add(foulSpinner.getSelectedItem().toString());
-                    foulCount.setText("Fouls: " + DataStore.getTeamBFouls().size());
+                    DataStore.getTeamBFouls().set(foulSpinner.getSelectedItemPosition(), DataStore.getTeamBFouls().get(foulSpinner.getSelectedItemPosition()) + 1);
+                    scoreTotal = DataStore.getTeamBFouls().stream().mapToInt(score -> score).sum();
+                    foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
+                }
+            }
+        });
+        decreaseFoul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int scoreTotal = 0;
+                if (isTeamASwitch.isChecked()) {
+                    DataStore.getTeamAFouls().set(foulSpinner.getSelectedItemPosition(), DataStore.getTeamAFouls().get(foulSpinner.getSelectedItemPosition()) - 1);
+                    scoreTotal = DataStore.getTeamAFouls().stream().mapToInt(score -> score).sum();
+                    foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
+                } else {
+                    DataStore.getTeamBFouls().set(foulSpinner.getSelectedItemPosition(), DataStore.getTeamBFouls().get(foulSpinner.getSelectedItemPosition()) - 1);
+                    scoreTotal = DataStore.getTeamBFouls().stream().mapToInt(score -> score).sum();
+                    foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
                 }
             }
         });
