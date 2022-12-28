@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -52,6 +53,7 @@ public class DashboardFragment extends Fragment {
     TextView foulCount;
 
 
+
     private FragmentDashboardBinding binding;
 
 
@@ -60,6 +62,7 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
         scoreDisplay = binding.scoreDisplay;
 
@@ -92,6 +95,8 @@ public class DashboardFragment extends Fragment {
 
         isTeamASwitch.setChecked(true);
         isTeamASwitch.setBackgroundColor(Color.rgb(252, 108, 66));
+
+
 
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
 
@@ -422,14 +427,15 @@ public class DashboardFragment extends Fragment {
 
     @Override
     public void onResume() {
+        changeScoreDisplay();
+        if (isTeamASwitch.isChecked()) {
+            int scoreTotal = DataStore.getTeamAFouls().stream().mapToInt(score -> score).sum();
+            foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
+        } else {
+            int scoreTotal = DataStore.getTeamBFouls().stream().mapToInt(score -> score).sum();
+            foulCount.setText("Fouls: " + Integer.toString(scoreTotal));
+        }
         super.onResume();
-//        namedisplayplayer1teamA.setText(DataStore.getTeamA()[0] + ": " + String.valueOf(DataStore.getPlayer1teamAScore()));
-//        namedisplayplayer2teamA.setText(DataStore.getTeamA()[1] + ": " + String.valueOf(DataStore.getPlayer2teamAScore()));
-//        namedisplayplayer3teamA.setText(DataStore.getTeamA()[2] + ": " + String.valueOf(DataStore.getPlayer3teamAScore()));
-//
-//        namedisplayplayer1teamB.setText(DataStore.getTeamB()[0] + ": " + String.valueOf(DataStore.getPlayer1teamBScore()));
-//        namedisplayplayer2teamB.setText(DataStore.getTeamB()[1] + ": " + String.valueOf(DataStore.getPlayer2teamBScore()));
-//        namedisplayplayer3teamB.setText(DataStore.getTeamB()[2] + ": " + String.valueOf(DataStore.getPlayer3teamBScore()));
 
 
     }

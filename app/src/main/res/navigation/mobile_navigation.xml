@@ -5,11 +5,11 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_generalInformation">
 
-    <fragment
-        android:id="@+id/navigation_matchInformation"
-        android:name="com.example.winscoringdemoapplication.ui.MatchInformationFragment"
-        android:label="Match Information"
-        tools:layout="@layout/fragment_match_information" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_matchInformation"-->
+<!--        android:name="com.example.winscoringdemoapplication.ui.MatchInformationFragment"-->
+<!--        android:label="Match Information"-->
+<!--        tools:layout="@layout/fragment_match_information" />-->
 
     <fragment
         android:id="@+id/navigation_qrcode"

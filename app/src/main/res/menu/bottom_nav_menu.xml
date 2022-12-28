@@ -7,10 +7,10 @@
         android:icon="@drawable/infoicon_foreground"
         android:title="General Information" />
 
-    <item
-        android:id="@+id/navigation_matchInformation"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Match Information" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_matchInformation"-->
+<!--        android:icon="@drawable/ic_home_black_24dp"-->
+<!--        android:title="Match Information" />-->
 
     <item
         android:id="@+id/navigation_dashboard"

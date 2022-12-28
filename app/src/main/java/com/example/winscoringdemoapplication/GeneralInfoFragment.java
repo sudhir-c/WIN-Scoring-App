@@ -30,6 +30,7 @@ public class GeneralInfoFragment extends Fragment {
     public Button rosterAButton;
     public Button rosterBButton;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGeneralInfoBinding.inflate(inflater, container, false);
@@ -45,7 +46,7 @@ public class GeneralInfoFragment extends Fragment {
         rosterAButton = binding.rosterAButton;
         rosterBButton = binding.rosterBButton;
 
-
+        matchDate.setVisibility(View.GONE);
         matchDate.setHint("Enter Date");
         matchDate.setText("");
         rosterAButton.setOnClickListener(new View.OnClickListener() {
