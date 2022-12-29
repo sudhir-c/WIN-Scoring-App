@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/navigation_generalInformation"
-        android:name="com.example.winscoringdemoapplication.GeneralInfoFragment"
+        android:name="com.example.winscoringdemoapplication.ui.GeneralInfoFragment"
         android:label="General Information"
         tools:layout="@layout/fragment_general_info" />
 

@@ -1,4 +1,4 @@
-package com.example.winscoringdemoapplication;
+package com.example.winscoringdemoapplication.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,11 +8,9 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
+import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.databinding.DialogfragmentRosterABinding;
-import com.example.winscoringdemoapplication.databinding.FragmentGeneralInfoBinding;
 
 public class RosterADialogFragment extends DialogFragment {
     EditText playerName1teamA;

@@ -1,13 +1,9 @@
-package com.example.winscoringdemoapplication;
+package com.example.winscoringdemoapplication.ui;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,7 +12,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.databinding.FragmentGeneralInfoBinding;
+import com.example.winscoringdemoapplication.ui.DatePickerFragment;
+import com.example.winscoringdemoapplication.ui.RosterADialogFragment;
+import com.example.winscoringdemoapplication.ui.RosterBDialogFragment;
 
 public class GeneralInfoFragment extends Fragment {
     public FragmentGeneralInfoBinding binding;

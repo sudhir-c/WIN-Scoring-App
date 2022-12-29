@@ -1,4 +1,4 @@
-package com.example.winscoringdemoapplication;
+package com.example.winscoringdemoapplication.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.databinding.DialogfragmentRosterBBinding;
 
 public class RosterBDialogFragment extends DialogFragment {
