@@ -35,19 +35,19 @@ public class MatchInformationFragment extends Fragment {
         binding = FragmentMatchInformationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        playerName1teamA = binding.playerName1teamA;
-        playerName2teamA = binding.playerName2teamA;
-        playerName3teamA = binding.playerName3teamA;
-        playerName4teamA = binding.playerName4teamA;
-        playerName5teamA = binding.playerName5teamA;
-        playerName6teamA = binding.playerName6teamA;
-
-        playerName1teamB = binding.playerName1teamB;
-        playerName2teamB = binding.playerName2teamB;
-        playerName3teamB = binding.playerName3teamB;
-        playerName4teamB = binding.playerName4teamB;
-        playerName5teamB = binding.playerName5teamB;
-        playerName6teamB = binding.playerName6teamB;
+//        playerName1teamA = binding.playerName1teamA;
+//        playerName2teamA = binding.playerName2teamA;
+//        playerName3teamA = binding.playerName3teamA;
+//        playerName4teamA = binding.playerName4teamA;
+//        playerName5teamA = binding.playerName5teamA;
+//        playerName6teamA = binding.playerName6teamA;
+//
+//        playerName1teamB = binding.playerName1teamB;
+//        playerName2teamB = binding.playerName2teamB;
+//        playerName3teamB = binding.playerName3teamB;
+//        playerName4teamB = binding.playerName4teamB;
+//        playerName5teamB = binding.playerName5teamB;
+//        playerName6teamB = binding.playerName6teamB;
 
 //        final TextView textView = binding.textHome;
 //        .getText().observe(getViewLifecycleOwner(), textView::setText);
