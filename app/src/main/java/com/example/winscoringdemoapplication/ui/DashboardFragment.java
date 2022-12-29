@@ -66,7 +66,7 @@ public class DashboardFragment extends Fragment {
 
         scoreDisplay = binding.scoreDisplay;
 
-        isTeamASwitch = binding.isTeamASwitch;
+        isTeamASwitch = binding.isTeamADashboardSwitch;
         namedisplayplayer1 = binding.namedisplayPlayer1;
         namedisplayplayer2 = binding.namedisplayPlayer2;
         namedisplayplayer3 = binding.namedisplayPlayer3;

@@ -46,7 +46,7 @@
                     android:orientation="horizontal">
 
                     <ToggleButton
-                        android:id="@+id/is_team_A_switch"
+                        android:id="@+id/isTeamADashboardSwitch"
                         android:layout_width="257dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
