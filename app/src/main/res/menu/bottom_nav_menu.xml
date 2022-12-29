@@ -9,8 +9,8 @@
 
     <item
         android:id="@+id/navigation_matchInformation"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Match Information" />
+        android:icon="@drawable/listicon_foreground"
+        android:title="Roster" />
 
     <item
         android:id="@+id/navigation_dashboard"

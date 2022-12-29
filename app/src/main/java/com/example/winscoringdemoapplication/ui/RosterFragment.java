@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.winscoringdemoapplication.DataStore;
-import com.example.winscoringdemoapplication.databinding.FragmentMatchInformationBinding;
+import com.example.winscoringdemoapplication.databinding.FragmentRosterBinding;
 
-public class MatchInformationFragment extends Fragment {
+public class RosterFragment extends Fragment {
     EditText playerName1teamA;
     EditText playerName2teamA;
     EditText playerName3teamA;
@@ -26,13 +26,13 @@ public class MatchInformationFragment extends Fragment {
     EditText playerName4teamB;
     EditText playerName5teamB;
     EditText playerName6teamB;
-    private FragmentMatchInformationBinding binding;
+    private FragmentRosterBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = FragmentMatchInformationBinding.inflate(inflater, container, false);
+        binding = FragmentRosterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 //        playerName1teamA = binding.playerName1teamA;

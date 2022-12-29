@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_matchInformation"
-        android:name="com.example.winscoringdemoapplication.ui.MatchInformationFragment"
+        android:name="com.example.winscoringdemoapplication.ui.RosterFragment"
         android:label="Match Information"
-        tools:layout="@layout/fragment_match_information" />
+        tools:layout="@layout/fragment_roster" />
 
     <fragment
         android:id="@+id/navigation_qrcode"
