@@ -283,7 +283,7 @@
                         android:inputType="number|numberDecimal" />
 
                     <EditText
-                        android:id="@+id/playerscore3"
+                        android:id="@+id/playerScore3"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
