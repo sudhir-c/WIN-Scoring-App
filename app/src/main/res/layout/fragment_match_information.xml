@@ -18,10 +18,11 @@
             android:orientation="vertical">
 
             <ToggleButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/isTeamARosterSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ToggleButton" />
+                android:gravity="center"
+                android:text="Team A" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="256dp"
+                    android:layout_width="195dp"
                     android:layout_height="795dp"
                     android:orientation="vertical">
 
@@ -38,7 +39,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -46,7 +48,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -54,7 +57,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -62,7 +66,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -70,7 +75,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -78,7 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -86,7 +93,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -94,7 +102,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -102,7 +111,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -110,7 +120,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -118,7 +129,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -126,8 +138,239 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:hint="Enter player name here."
+                        android:gravity="center"
+                        android:hint="Enter player name here"
                         android:inputType="textPersonName" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/playerNumber1"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber3"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber4"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber5"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber6"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber7"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber8"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber9"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber10"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber11"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/playerNumber12"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="#"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/playerScore1"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerscore3"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore4"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore5"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore6"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore7"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore8"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore9"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore10"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore11"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/playerScore12"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Score"
+                        android:inputType="number|numberDecimal" />
 
                 </LinearLayout>
 
@@ -136,113 +379,77 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/playerNumber1"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn1"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber2"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn2"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber3"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn3"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber4"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn4"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber5"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn5"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber6"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn6"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber7"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn7"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber8"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn8"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber9"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn9"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber10"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn10"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber11"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn11"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
-                    <EditText
-                        android:id="@+id/playerNumber12"
-                        android:layout_width="48dp"
+                    <CheckBox
+                        android:id="@+id/playerOn12"
+                        android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="#"
-                        android:inputType="textPersonName" />
+                        android:gravity="center" />
 
                 </LinearLayout>
             </LinearLayout>
