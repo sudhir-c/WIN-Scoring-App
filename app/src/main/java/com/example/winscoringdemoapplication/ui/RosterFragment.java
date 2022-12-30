@@ -150,8 +150,140 @@ public class RosterFragment extends Fragment {
             }
         });
 
-        updateUI();
+        playerOn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(1, playerOn1.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(1, playerOn1.isChecked());
+                }
+            }
+        });
 
+        playerOn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(2, playerOn2.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(2, playerOn2.isChecked());
+                }
+            }
+        });
+
+        playerOn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(3, playerOn3.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(3, playerOn3.isChecked());
+                }
+            }
+        });
+
+        playerOn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(4, playerOn4.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(4, playerOn4.isChecked());
+                }
+            }
+        });
+
+        playerOn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(5, playerOn5.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(5, playerOn5.isChecked());
+                }
+            }
+        });
+
+        playerOn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(6, playerOn6.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(6, playerOn6.isChecked());
+                }
+            }
+        });
+
+        playerOn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(7, playerOn7.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(7, playerOn7.isChecked());
+                }
+            }
+        });
+
+        playerOn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(8, playerOn8.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(8, playerOn8.isChecked());
+                }
+            }
+        });
+
+        playerOn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(9, playerOn9.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(9, playerOn9.isChecked());
+                }
+            }
+        });
+
+        playerOn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(10, playerOn10.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(10, playerOn10.isChecked());
+                }
+            }
+        });
+
+        playerOn11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(11, playerOn11.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(11, playerOn11.isChecked());
+                }
+            }
+        });
+
+        playerOn12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTeamARosterSwitch.isChecked()) {
+                    DataStore.getActiveTeamARoster().replace(12, playerOn12.isChecked());
+                } else {
+                    DataStore.getActiveTeamBRoster().replace(12, playerOn12.isChecked());
+                }
+            }
+        });
+
+
+        updateUI();
         return root;
     }
 
@@ -205,6 +337,18 @@ public class RosterFragment extends Fragment {
 
     public void updateUI() {
         if (isTeamARosterSwitch.isChecked()) {
+            playerOn1.setChecked(DataStore.getActiveTeamARoster().get(1));
+            playerOn2.setChecked(DataStore.getActiveTeamARoster().get(2));
+            playerOn3.setChecked(DataStore.getActiveTeamARoster().get(3));
+            playerOn4.setChecked(DataStore.getActiveTeamARoster().get(4));
+            playerOn5.setChecked(DataStore.getActiveTeamARoster().get(5));
+            playerOn6.setChecked(DataStore.getActiveTeamARoster().get(6));
+            playerOn7.setChecked(DataStore.getActiveTeamARoster().get(7));
+            playerOn8.setChecked(DataStore.getActiveTeamARoster().get(8));
+            playerOn9.setChecked(DataStore.getActiveTeamARoster().get(9));
+            playerOn10.setChecked(DataStore.getActiveTeamARoster().get(10));
+            playerOn11.setChecked(DataStore.getActiveTeamARoster().get(11));
+            playerOn12.setChecked(DataStore.getActiveTeamARoster().get(12));
             try {
 //                playerName1.setText(DataStore.getFullTeamARoster().get(1).get(0));
 //                playerNumber1.setText(Integer.parseInt(DataStore.getFullTeamARoster().get(1).get(1)));
@@ -317,6 +461,18 @@ public class RosterFragment extends Fragment {
                 playerScore12.setText("0");
             }
         } else {
+            playerOn1.setChecked(DataStore.getActiveTeamBRoster().get(1));
+            playerOn2.setChecked(DataStore.getActiveTeamBRoster().get(2));
+            playerOn3.setChecked(DataStore.getActiveTeamBRoster().get(3));
+            playerOn4.setChecked(DataStore.getActiveTeamBRoster().get(4));
+            playerOn5.setChecked(DataStore.getActiveTeamBRoster().get(5));
+            playerOn6.setChecked(DataStore.getActiveTeamBRoster().get(6));
+            playerOn7.setChecked(DataStore.getActiveTeamBRoster().get(7));
+            playerOn8.setChecked(DataStore.getActiveTeamBRoster().get(8));
+            playerOn9.setChecked(DataStore.getActiveTeamBRoster().get(9));
+            playerOn10.setChecked(DataStore.getActiveTeamBRoster().get(10));
+            playerOn11.setChecked(DataStore.getActiveTeamBRoster().get(11));
+            playerOn12.setChecked(DataStore.getActiveTeamBRoster().get(12));
             try {
 //                playerName1.setText(DataStore.getFullTeamBRoster().get(1).get(0));
 //                playerNumber1.setText(Integer.parseInt(DataStore.getFullTeamBRoster().get(1).get(1)));

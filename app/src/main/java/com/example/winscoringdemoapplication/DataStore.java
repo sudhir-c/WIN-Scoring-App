@@ -36,62 +36,25 @@ public class DataStore {
 
     private static HashMap<Integer, ArrayList<String>> fullTeamARoster = new HashMap<Integer, ArrayList<String>>();
     private static HashMap<Integer, ArrayList<String>> fullTeamBRoster = new HashMap<Integer, ArrayList<String>>();
-    static {
-        DataStore.getFullTeamARoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
 
-        DataStore.getFullTeamBRoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
+    private static HashMap<Integer, Boolean> activeTeamARoster = new HashMap<Integer, Boolean>();
+    private static HashMap<Integer, Boolean> activeTeamBRoster = new HashMap<Integer, Boolean>();
+
+    public static HashMap<Integer, Boolean> getActiveTeamARoster() {
+        return activeTeamARoster;
     }
 
-    /*
-        DataStore.getFullTeamARoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamARoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
+    public static void setActiveTeamARoster(HashMap<Integer, Boolean> activeTeamARoster) {
+        DataStore.activeTeamARoster = activeTeamARoster;
+    }
 
-        DataStore.getFullTeamBRoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
-        DataStore.getFullTeamBRoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
-     */
+    public static HashMap<Integer, Boolean> getActiveTeamBRoster() {
+        return activeTeamBRoster;
+    }
 
+    public static void setActiveTeamBRoster(HashMap<Integer, Boolean> activeTeamBRoster) {
+        DataStore.activeTeamBRoster = activeTeamBRoster;
+    }
 
     public static HashMap<Integer, ArrayList<String>> getFullTeamARoster() {
         return fullTeamARoster;
@@ -285,6 +248,61 @@ public class DataStore {
 
     public static void setTeamB(String[] teamB) {
         DataStore.teamB = teamB;
+    }
+
+    static {
+        DataStore.getFullTeamARoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamARoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
+
+        DataStore.getFullTeamBRoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(2, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(3, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(4, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(5, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(6, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(7, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(8, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(9, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(10, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(11, new ArrayList<>(Arrays.asList("", "", "")));
+        DataStore.getFullTeamBRoster().put(12, new ArrayList<>(Arrays.asList("", "", "")));
+
+        DataStore.getActiveTeamARoster().put(1, false);
+        DataStore.getActiveTeamARoster().put(2, false);
+        DataStore.getActiveTeamARoster().put(3, false);
+        DataStore.getActiveTeamARoster().put(4, false);
+        DataStore.getActiveTeamARoster().put(5, false);
+        DataStore.getActiveTeamARoster().put(6, false);
+        DataStore.getActiveTeamARoster().put(7, false);
+        DataStore.getActiveTeamARoster().put(8, false);
+        DataStore.getActiveTeamARoster().put(9, false);
+        DataStore.getActiveTeamARoster().put(10, false);
+        DataStore.getActiveTeamARoster().put(11, false);
+        DataStore.getActiveTeamARoster().put(12, false);
+
+        DataStore.getActiveTeamBRoster().put(1, false);
+        DataStore.getActiveTeamBRoster().put(2, false);
+        DataStore.getActiveTeamBRoster().put(3, false);
+        DataStore.getActiveTeamBRoster().put(4, false);
+        DataStore.getActiveTeamBRoster().put(5, false);
+        DataStore.getActiveTeamBRoster().put(6, false);
+        DataStore.getActiveTeamBRoster().put(7, false);
+        DataStore.getActiveTeamBRoster().put(8, false);
+        DataStore.getActiveTeamBRoster().put(9, false);
+        DataStore.getActiveTeamBRoster().put(10, false);
+        DataStore.getActiveTeamBRoster().put(11, false);
+        DataStore.getActiveTeamBRoster().put(12, false);
+
     }
 
 
