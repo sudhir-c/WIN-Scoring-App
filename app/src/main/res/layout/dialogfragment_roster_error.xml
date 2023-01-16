@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RosterFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="9dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="354dp"
+                android:layout_height="167dp"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_dialog_alert"
+                app:tint="#FF6D00" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="9dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/teamAErrorTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Team A"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/invalidPlayerAmountTeamA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please check exactly five players."
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/invalidPlayerScoreTeamA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please make sure each player's score sums to no more than 14."
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/teamBErrorTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Team B"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/invalidPlayerAmountTeamB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please check exactly five players."
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/invalidPlayerScoreTeamB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please make sure each player's score sums to no more than 14."
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="9dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

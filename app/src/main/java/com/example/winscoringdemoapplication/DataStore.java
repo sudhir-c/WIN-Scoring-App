@@ -9,8 +9,31 @@ import java.util.List;
 import java.util.Map;
 
 public class DataStore {
-    private static String[] teamA = {"", "", "", "", "", "",};
-    private static String[] teamB = {"", "", "", "", "", "",};
+//    private static String[] teamA = {"", "", "", "", "", "",};
+//    private static String[] teamB = {"", "", "", "", "", "",};
+//
+//    private static ArrayList<String> teamA = new ArrayList<String>(Arrays.asList("", "", "", "", ""));
+//    private static ArrayList<String> teamB = new ArrayList<String>(Arrays.asList("", "", "", "", ""));
+    private static ArrayList<String> teamA = new ArrayList<String>();
+    private static ArrayList<String> teamB = new ArrayList<String>();
+
+
+    public static ArrayList<String> getTeamA() {
+        return teamA;
+    }
+
+    public static void setTeamA(ArrayList<String> teamA) {
+        DataStore.teamA = teamA;
+    }
+
+    public static ArrayList<String> getTeamB() {
+        return teamB;
+    }
+
+    public static void setTeamB(ArrayList<String> teamB) {
+        DataStore.teamB = teamB;
+    }
+
     private static int player1teamAScore;
     private static int player2teamAScore;
     private static int player3teamAScore;
@@ -39,6 +62,47 @@ public class DataStore {
 
     private static HashMap<Integer, Boolean> activeTeamARoster = new HashMap<Integer, Boolean>();
     private static HashMap<Integer, Boolean> activeTeamBRoster = new HashMap<Integer, Boolean>();
+
+    private static int teamAPlayerScoreTotal;
+    private static int teamBPlayerScoreTotal;
+
+    private static boolean isActiveTeamANot5;
+    private static boolean doesActiveTeamAPointsExceed14;
+    private static boolean isActiveTeamBNot5;
+    private static boolean doesActiveTeamBPointsExceed14;
+
+    public static boolean isIsActiveTeamANot5() {
+        return isActiveTeamANot5;
+    }
+
+    public static void setIsActiveTeamANot5(boolean isActiveTeamANot5) {
+        DataStore.isActiveTeamANot5 = isActiveTeamANot5;
+    }
+
+    public static boolean doesActiveTeamAPointsExceed14() {
+        return doesActiveTeamAPointsExceed14;
+    }
+
+    public static void setDoesActiveTeamAPointsExceed14(boolean doesActiveTeamAPointsExceed14) {
+        DataStore.doesActiveTeamAPointsExceed14 = doesActiveTeamAPointsExceed14;
+    }
+
+    public static boolean isIsActiveTeamBNot5() {
+        return isActiveTeamBNot5;
+    }
+
+    public static void setIsActiveTeamBNot5(boolean isActiveTeamBNot5) {
+        DataStore.isActiveTeamBNot5 = isActiveTeamBNot5;
+    }
+
+    public static boolean doesActiveTeamBPointsExceed14() {
+        return doesActiveTeamBPointsExceed14;
+    }
+
+    public static void setDoesActiveTeamBPointsExceed14(boolean doesActiveTeamBPointsExceed14) {
+        DataStore.doesActiveTeamBPointsExceed14 = doesActiveTeamBPointsExceed14;
+    }
+
 
     public static HashMap<Integer, Boolean> getActiveTeamARoster() {
         return activeTeamARoster;
@@ -234,21 +298,21 @@ public class DataStore {
         DataStore.player1teamAScore = player1teamAScore;
     }
 
-    public static String[] getTeamA() {
-        return teamA;
-    }
-
-    public static void setTeamA(String[] teamA) {
-        DataStore.teamA = teamA;
-    }
-
-    public static String[] getTeamB() {
-        return teamB;
-    }
-
-    public static void setTeamB(String[] teamB) {
-        DataStore.teamB = teamB;
-    }
+//    public static String[] getTeamA() {
+//        return teamA;
+//    }
+//
+//    public static void setTeamA(String[] teamA) {
+//        DataStore.teamA = teamA;
+//    }
+//
+//    public static String[] getTeamB() {
+//        return teamB;
+//    }
+//
+//    public static void setTeamB(String[] teamB) {
+//        DataStore.teamB = teamB;
+//    }
 
     static {
         DataStore.getFullTeamARoster().put(1, new ArrayList<>(Arrays.asList("", "", "")));

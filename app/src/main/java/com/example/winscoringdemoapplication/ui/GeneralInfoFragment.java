@@ -15,8 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.databinding.FragmentGeneralInfoBinding;
 import com.example.winscoringdemoapplication.ui.DatePickerFragment;
-import com.example.winscoringdemoapplication.ui.RosterADialogFragment;
-import com.example.winscoringdemoapplication.ui.RosterBDialogFragment;
 
 public class GeneralInfoFragment extends Fragment {
     public FragmentGeneralInfoBinding binding;
@@ -49,17 +47,21 @@ public class GeneralInfoFragment extends Fragment {
         matchDate.setVisibility(View.GONE);
         matchDate.setHint("Enter Date");
         matchDate.setText("");
+
+        rosterAButton.setVisibility(View.GONE);
+        rosterBButton.setVisibility(View.GONE);
+
         rosterAButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogA();
+                //showDialogA();
             }
         });
 
         rosterBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogB();
+                //showDialogB();
             }
         });
 
@@ -145,53 +147,53 @@ public class GeneralInfoFragment extends Fragment {
         binding = null;
     }
 
-    void showDialogA() {
-        // DialogFragment.show() will take care of adding the fragment
-        // in a transaction.  We also want to remove any currently showing
-        // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("rostera");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        DialogFragment newFragment = RosterADialogFragment.newInstance();
-
-        newFragment.show(ft, "rostera");
-    }
-
-    void showDialogB() {
-        // DialogFragment.show() will take care of adding the fragment
-        // in a transaction.  We also want to remove any currently showing
-        // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("rosterb");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        DialogFragment newFragment = RosterBDialogFragment.newInstance();
-//        int width = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
-//        int height = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
-//        newFragment.getDialog().getWindow().setLayout(width, height);
-        newFragment.show(ft, "rosterb");
-//        DisplayMetrics displayMetrics = new DisplayMetrics();
-//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-//        //layoutParams.copyFrom(newFragment.getDialog().getWindow().getAttributes());
+//    void showDialogA() {
+//        // DialogFragment.show() will take care of adding the fragment
+//        // in a transaction.  We also want to remove any currently showing
+//        // dialog, so make our own transaction and take care of that here.
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        Fragment prev = getFragmentManager().findFragmentByTag("rostera");
+//        if (prev != null) {
+//            ft.remove(prev);
+//        }
+//        ft.addToBackStack(null);
 //
-//        // setting width to 90% of display
-//        layoutParams.width = (int) (displayMetrics.widthPixels * 0.9f);
+//        // Create and show the dialog.
+//        DialogFragment newFragment = RosterADialogFragment.newInstance();
 //
-//        // setting height to 90% of display
-//        layoutParams.height = (int) (displayMetrics.heightPixels * 0.9f);
-//        newFragment.getDialog().getWindow().setAttributes(layoutParams);
-////        newFragment.setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
-    }
+//        newFragment.show(ft, "rostera");
+//    }
+//
+//    void showDialogB() {
+//        // DialogFragment.show() will take care of adding the fragment
+//        // in a transaction.  We also want to remove any currently showing
+//        // dialog, so make our own transaction and take care of that here.
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        Fragment prev = getFragmentManager().findFragmentByTag("rosterb");
+//        if (prev != null) {
+//            ft.remove(prev);
+//        }
+//        ft.addToBackStack(null);
+//
+//        // Create and show the dialog.
+//        DialogFragment newFragment = RosterBDialogFragment.newInstance();
+////        int width = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
+////        int height = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
+////        newFragment.getDialog().getWindow().setLayout(width, height);
+//        newFragment.show(ft, "rosterb");
+////        DisplayMetrics displayMetrics = new DisplayMetrics();
+////        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+////        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+////        //layoutParams.copyFrom(newFragment.getDialog().getWindow().getAttributes());
+////
+////        // setting width to 90% of display
+////        layoutParams.width = (int) (displayMetrics.widthPixels * 0.9f);
+////
+////        // setting height to 90% of display
+////        layoutParams.height = (int) (displayMetrics.heightPixels * 0.9f);
+////        newFragment.getDialog().getWindow().setAttributes(layoutParams);
+//////        newFragment.setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
+//    }
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();

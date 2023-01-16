@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.databinding.FragmentRosterBinding;
@@ -290,6 +293,7 @@ public class RosterFragment extends Fragment {
     @Override
     public void onPause() {
         updateData();
+        checkActivePlayers();
         super.onPause();
     }
 
@@ -585,5 +589,98 @@ public class RosterFragment extends Fragment {
                 playerScore12.setText("0");
             }
         }
+    }
+
+    public void checkActivePlayers() {
+        ArrayList<Integer> teamAActivePlayers = new ArrayList<Integer>();
+        ArrayList<Integer> teamBActivePlayers = new ArrayList<Integer>();
+        DataStore.getTeamA().clear();
+        DataStore.getTeamB().clear();
+        DataStore.setIsActiveTeamANot5(false);
+        DataStore.setDoesActiveTeamAPointsExceed14(false);
+        DataStore.setIsActiveTeamBNot5(false);
+        DataStore.setDoesActiveTeamBPointsExceed14(false);
+        for (int i = 1; i <= 12; i++) {
+            boolean isPlayerOn = DataStore.getActiveTeamARoster().get(i);
+            if (isPlayerOn) {
+                DataStore.getTeamA().add(String.valueOf(DataStore.getFullTeamARoster().get(i)));
+                teamAActivePlayers.add(i);
+
+            }
+        }
+        for (int i = 1; i <= 12; i++) {
+            boolean isPlayerOn = DataStore.getActiveTeamBRoster().get(i);
+            if (isPlayerOn) {
+                DataStore.getTeamB().add(String.valueOf(DataStore.getFullTeamBRoster().get(i)));
+                teamBActivePlayers.add(i);
+
+            }
+        }
+        if (DataStore.getTeamA().size() != 5) {
+            DataStore.setIsActiveTeamANot5(true);
+        }
+        if (DataStore.getTeamB().size() != 5) {
+            DataStore.setIsActiveTeamBNot5(true);
+        }
+        int teamATotalScore = 0;
+        for (Integer x : teamAActivePlayers) {
+            try {
+                teamATotalScore += Integer.parseInt(DataStore.getFullTeamARoster().get(x).get(2));
+            } catch (NumberFormatException e) {
+            }
+        }
+        if (teamATotalScore > 14) {
+            DataStore.setDoesActiveTeamAPointsExceed14(true);
+        }
+        int teamBTotalScore = 0;
+        for (Integer x : teamBActivePlayers) {
+            try {
+                teamBTotalScore += Integer.parseInt(DataStore.getFullTeamBRoster().get(x).get(2));
+            } catch (NumberFormatException e) {
+            }
+        }
+        if (teamBTotalScore > 14) {
+            DataStore.setDoesActiveTeamBPointsExceed14(true);
+        }
+        showErrorDialog();
+
+
+//        //If it was unchecked and is now checked
+//        if (checkbox.isChecked()) {
+//
+//        } else { //If it was checked and is now not checked
+//
+//        }
+    }
+
+    void showErrorDialog() {
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("rostererror");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        DialogFragment newFragment = RosterErrorDialogFragment.newInstance();
+//        int width = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
+//        int height = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
+//        newFragment.getDialog().getWindow().setLayout(width, height);
+        newFragment.show(ft, "rostererror");
+//        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//        //layoutParams.copyFrom(newFragment.getDialog().getWindow().getAttributes());
+//
+//        // setting width to 90% of display
+//        layoutParams.width = (int) (displayMetrics.widthPixels * 0.9f);
+//
+//        // setting height to 90% of display
+//        layoutParams.height = (int) (displayMetrics.heightPixels * 0.9f);
+//        newFragment.getDialog().getWindow().setAttributes(layoutParams);
+////        newFragment.setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
     }
 }

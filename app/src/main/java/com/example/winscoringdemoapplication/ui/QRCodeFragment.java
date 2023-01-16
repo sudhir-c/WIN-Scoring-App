@@ -91,13 +91,13 @@ public class QRCodeFragment extends Fragment {
         matchJSON.put("Match Location", DataStore.getMatchLocation());
         matchJSON.put("Team A Name", DataStore.getTeamAName());
         matchJSON.put("Team A Coach", DataStore.getTeamACoach());
-        matchJSON.put("Team A Roster", Arrays.toString(DataStore.getTeamA()));
+        //matchJSON.put("Team A Roster", Arrays.toString(DataStore.getTeamA()));
         matchJSON.put("Team A Total Score", teamATotalScore);
         matchJSON.put("Team A Scores", teamAScores);
         matchJSON.put("Team A Fouls", DataStore.getTeamAFouls());
         matchJSON.put("Team B Name", DataStore.getTeamBName());
         matchJSON.put("Team B Coach", DataStore.getTeamBCoach());
-        matchJSON.put("Team B Roster", Arrays.toString(DataStore.getTeamB()));
+        //matchJSON.put("Team B Roster", Arrays.toString(DataStore.getTeamB()));
         matchJSON.put("Team B Total Score", teamBTotalScore);
         matchJSON.put("Team B Scores", teamBScores);
         matchJSON.put("Team B Fouls", DataStore.getTeamBFouls());

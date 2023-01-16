@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/dialogfragment_roster.xml" value="0.3301486913708674" />
         <entry key="app/src/main/res/layout/dialogfragment_roster_a.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/dialogfragment_roster_b.xml" value="0.36791419430055483" />
+        <entry key="app/src/main/res/layout/dialogfragment_roster_error.xml" value="0.30171305338541665" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.42311452229817725" />
         <entry key="app/src/main/res/layout/fragment_general_info.xml" value="0.2729156494140627" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.29384613037109375" />
@@ -35,5 +36,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.30171305338541665" />
+      </ProjectState>
+    </option>
   </component>
 </project>
