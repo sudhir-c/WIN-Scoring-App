@@ -23,6 +23,7 @@ import com.example.winscoringdemoapplication.DataStore;
 import com.example.winscoringdemoapplication.R;
 import com.example.winscoringdemoapplication.databinding.FragmentDashboardBinding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DashboardFragment extends Fragment {
@@ -102,6 +103,25 @@ public class DashboardFragment extends Fragment {
 
 
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
+
+        ArrayList<Integer> teamAActivePlayers = new ArrayList<Integer>();
+        ArrayList<Integer> teamBActivePlayers = new ArrayList<Integer>();
+        for (int i = 1; i <= 12; i++) {
+            boolean isPlayerOn = DataStore.getActiveTeamARoster().get(i);
+            if (isPlayerOn) {
+                DataStore.getTeamA().add(String.valueOf(DataStore.getFullTeamARoster().get(i)));
+                teamAActivePlayers.add(i);
+
+            }
+        }
+        for (int i = 1; i <= 12; i++) {
+            boolean isPlayerOn = DataStore.getActiveTeamBRoster().get(i);
+            if (isPlayerOn) {
+                DataStore.getTeamB().add(String.valueOf(DataStore.getFullTeamBRoster().get(i)));
+                teamBActivePlayers.add(i);
+
+            }
+        }
 
 
         if (isTeamASwitch.isChecked()) {
