@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2245" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.403" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3355" />
+        <entry key="app/src/main/res/drawable/listicon_background.xml" value="0.336" />
+        <entry key="app/src/main/res/drawable/listicon_foreground.xml" value="0.336" />
         <entry key="app/src/main/res/drawable/mainlogo.xml" value="0.10024609375000001" />
         <entry key="app/src/main/res/drawable/qrcodeicon_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/qrcodeicon_foreground.xml" value="0.225" />
@@ -15,11 +17,12 @@
         <entry key="app/src/main/res/layout/dialogfragment_roster.xml" value="0.3301486913708674" />
         <entry key="app/src/main/res/layout/dialogfragment_roster_a.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/dialogfragment_roster_b.xml" value="0.36791419430055483" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.42311452229817725" />
+        <entry key="app/src/main/res/layout/dialogfragment_roster_error.xml" value="0.30171305338541665" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.4675925925925926" />
         <entry key="app/src/main/res/layout/fragment_general_info.xml" value="0.2729156494140627" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.29384613037109375" />
         <entry key="app/src/main/res/layout/fragment_matchInformation.xml" value="0.3333333333333333" />
-        <entry key="app/src/main/res/layout/fragment_match_information.xml" value="0.24130554199218748" />
+        <entry key="app/src/main/res/layout/fragment_match_information.xml" value="0.31385345458984365" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/fragment_qrcode.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3333333333333333" />
@@ -33,5 +36,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.30171305338541665" />
+      </ProjectState>
+    </option>
   </component>
 </project>

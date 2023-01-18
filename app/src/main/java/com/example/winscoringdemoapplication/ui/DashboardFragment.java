@@ -2,6 +2,7 @@ package com.example.winscoringdemoapplication.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.example.winscoringdemoapplication.databinding.FragmentDashboardBindin
 import java.util.Arrays;
 
 public class DashboardFragment extends Fragment {
+
 
     ToggleButton isTeamASwitch;
     TextView namedisplayplayer1;
@@ -97,6 +99,17 @@ public class DashboardFragment extends Fragment {
         isTeamASwitch.setBackgroundColor(Color.rgb(252, 108, 66));
 
 
+        CountDownTimer timer = new CountDownTimer(2400000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
 
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
 
