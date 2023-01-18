@@ -114,19 +114,6 @@ public class DashboardFragment extends Fragment {
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
 
 
-//        CountDownTimer timer = new CountDownTimer(milliSecondsTillEnd, 1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                timerTick(millisUntilFinished);
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                timerDisplay.setText("0:00");
-//            }
-//        };
-
-
         startTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +137,9 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+        String[] quarters = {"1", "2", "3", "4"};
+        ArrayAdapter quarterArrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, quarters);
+        quarterSpinner.setAdapter(quarterArrayAdapter);
 
         if (isTeamASwitch.isChecked()) {
             isTeamASwitch.setTextColor(Color.BLACK);
