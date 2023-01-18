@@ -132,6 +132,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 milliSecondsTillEnd = 600000;
+                timerDisplay.setText("10:00");
                 timer.cancel();
 
             }
