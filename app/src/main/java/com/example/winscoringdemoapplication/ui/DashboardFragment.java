@@ -2,6 +2,7 @@ package com.example.winscoringdemoapplication.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,14 @@ import com.example.winscoringdemoapplication.databinding.FragmentDashboardBindin
 import java.util.Arrays;
 
 public class DashboardFragment extends Fragment {
+
+    long milliSecondsTillEnd = 600000;
+    CountDownTimer timer;
+    TextView timerDisplay;
+    Button startTimer;
+    Button pauseTimer;
+    Button resetTimer;
+    Spinner quarterSpinner;
 
     ToggleButton isTeamASwitch;
     TextView namedisplayplayer1;
@@ -53,7 +62,6 @@ public class DashboardFragment extends Fragment {
     TextView foulCount;
 
 
-
     private FragmentDashboardBinding binding;
 
 
@@ -63,6 +71,12 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
+        timerDisplay = binding.timerDisplay;
+        startTimer = binding.startTimer;
+        pauseTimer = binding.pauseTimer;
+        resetTimer = binding.resetTimer;
+        quarterSpinner = binding.quarterSpinner;
 
         scoreDisplay = binding.scoreDisplay;
 
@@ -97,9 +111,36 @@ public class DashboardFragment extends Fragment {
         isTeamASwitch.setBackgroundColor(Color.rgb(252, 108, 66));
 
 
-
         final ArrayAdapter[] foulSpinnerArrayAdapter = new ArrayAdapter[1];
 
+
+        startTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer = newTimer(milliSecondsTillEnd);
+                timer.start();
+            }
+        });
+        pauseTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+
+            }
+        });
+        resetTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                milliSecondsTillEnd = 600000;
+                timerDisplay.setText("10:00");
+                timer.cancel();
+
+            }
+        });
+
+        String[] quarters = {"1", "2", "3", "4"};
+        ArrayAdapter quarterArrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, quarters);
+        quarterSpinner.setAdapter(quarterArrayAdapter);
 
         if (isTeamASwitch.isChecked()) {
             isTeamASwitch.setTextColor(Color.BLACK);
@@ -446,4 +487,29 @@ public class DashboardFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public void timerTick(long millisUntilFinished) {
+                long totalSeconds = millisUntilFinished / 1000;
+                long minutes = totalSeconds / 60;
+                long extraSeconds = totalSeconds % 60;
+                timerDisplay.setText(minutes + ":" + extraSeconds);
+
+    }
+
+    public CountDownTimer newTimer(long milliSeconds) {
+        return new CountDownTimer(milliSeconds, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                milliSecondsTillEnd = millisUntilFinished;
+                timerTick(millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish() {
+                timerDisplay.setText("0:00");
+                this.cancel();
+            }
+        };
+    }
+
 }
