@@ -11,23 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.winscoringdemoapplication.DataStore;
-import com.example.winscoringdemoapplication.R;
 import com.example.winscoringdemoapplication.databinding.FragmentDashboardBinding;
-
-import java.util.Arrays;
 
 public class DashboardFragment extends Fragment {
 
     long milliSecondsTillEnd = 600000;
     CountDownTimer timer;
-    TextView timerDisplay;
+    EditText timerDisplayEditable;
     Button startTimer;
     Button pauseTimer;
     Button resetTimer;
@@ -72,7 +69,7 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        timerDisplay = binding.timerDisplay;
+        timerDisplayEditable = binding.timerDisplayEditable;
         startTimer = binding.startTimer;
         pauseTimer = binding.pauseTimer;
         resetTimer = binding.resetTimer;
@@ -132,8 +129,34 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 milliSecondsTillEnd = 600000;
-                timerDisplay.setText("10:00");
+                timerDisplayEditable.setText("10:00");
                 timer.cancel();
+
+            }
+        });
+        timerDisplayEditable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String time = timerDisplayEditable.getText().toString();
+                if (!time.contains(":")) {
+                    Toast t = new Toast(getContext());
+                    t.setText("Please format xx:xx");
+                    t.show();
+                } else {
+                    try {
+                        char[] timeChars = new char[5];
+                        time.getChars(0, 5, timeChars, 0);
+                        String minutesString = "" + timeChars[0] + timeChars[1];
+                        String secondsString = "" + timeChars[3] + timeChars[4];
+                        milliSecondsTillEnd = ((Integer.parseInt(minutesString)*60*1000) + (Integer.parseInt(secondsString)*1000));
+                    } catch (Exception e) {
+                        Toast t = new Toast(getContext());
+                        t.setText("Please put in a time");
+                        t.show();
+
+                    }
+                }
+
 
             }
         });
@@ -492,7 +515,7 @@ public class DashboardFragment extends Fragment {
                 long totalSeconds = millisUntilFinished / 1000;
                 long minutes = totalSeconds / 60;
                 long extraSeconds = totalSeconds % 60;
-                timerDisplay.setText(minutes + ":" + extraSeconds);
+                timerDisplayEditable.setText(minutes + ":" + extraSeconds);
 
     }
 
@@ -506,7 +529,7 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onFinish() {
-                timerDisplay.setText("0:00");
+                timerDisplayEditable.setText("0:00");
                 this.cancel();
             }
         };
