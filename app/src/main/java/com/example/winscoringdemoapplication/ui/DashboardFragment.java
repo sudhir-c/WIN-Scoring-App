@@ -138,7 +138,7 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-        String[] quarters = {"1", "2", "3", "4"};
+        String[] quarters = {"1", "2", "3", "4", "Extra time"};
         ArrayAdapter quarterArrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, quarters);
         quarterSpinner.setAdapter(quarterArrayAdapter);
 
